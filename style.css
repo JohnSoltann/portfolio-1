@@ -1,0 +1,308 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: #0a0a0a;
+    color: #fff;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+/* Header Styles with Kinetic Typography */
+header {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.kinetic-text {
+    font-size: 5rem;
+    font-weight: 700;
+    background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.kinetic-text:hover {
+    transform: scale(1.1);
+    text-shadow: 0 0 20px rgba(255,255,255,0.5);
+}
+
+.subtitle {
+    font-size: 1.5rem;
+    margin-top: 1rem;
+    opacity: 0.8;
+}
+
+/* Navigation - Updated Styles */
+nav {
+    position: fixed;
+    top: 2rem;
+    right: 2rem;
+    z-index: 100;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+}
+
+/* Base styles for nav links */
+.nav-link {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.2rem;
+    position: relative;
+    padding: 0.8rem 1.5rem;
+    transition: all 0.3s ease;
+}
+
+/* Home Button Style */
+.home-link {
+    background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+    border-radius: 50px;
+    box-shadow: 0 0 15px rgba(255,107,107,0.3);
+    overflow: hidden;
+}
+
+.home-link::before {
+    content: '🏠';
+    position: absolute;
+    left: -20px;
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.home-link:hover {
+    padding-left: 2.5rem;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 20px rgba(255,107,107,0.5);
+}
+
+.home-link:hover::before {
+    left: 15px;
+    opacity: 1;
+}
+
+/* Skills Button Style */
+.skills-link {
+    background: rgba(10,10,10,0.8);
+    border: 2px solid #4ecdc4;
+    border-radius: 8px;
+    backdrop-filter: blur(10px);
+}
+
+.skills-link::before,
+.skills-link::after {
+    content: '';
+    position: absolute;
+    width: 2px;
+    height: 0;
+    background: #4ecdc4;
+    transition: height 0.3s ease;
+}
+
+.skills-link::before {
+    left: 0;
+    top: 0;
+}
+
+.skills-link::after {
+    right: 0;
+    bottom: 0;
+}
+
+.skills-link:hover {
+    background: rgba(78,205,196,0.1);
+    transform: scale(1.05);
+    letter-spacing: 2px;
+}
+
+.skills-link:hover::before,
+.skills-link:hover::after {
+    height: 100%;
+}
+
+/* Animation for active state */
+.nav-link:active {
+    transform: scale(0.95);
+}
+
+/* Remove old styles */
+.nav-link::after {
+    display: none;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    nav {
+        position: fixed;
+        top: 1rem;
+        right: 1rem;
+        background: rgba(10,10,10,0.9);
+        padding: 1rem;
+        border-radius: 15px;
+    }
+    
+    nav ul {
+        flex-direction: row;
+        gap: 1rem;
+    }
+    
+    .home-link, .skills-link {
+        font-size: 1rem;
+        padding: 0.6rem 1.2rem;
+    }
+}
+
+/* Sections */
+section {
+    min-height: 100vh;
+    padding: 4rem 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.section-title {
+    font-size: 3rem;
+    margin-bottom: 2rem;
+    position: relative;
+    display: inline-block;
+}
+
+.section-title::before {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 50px;
+    height: 3px;
+    background: #4ecdc4;
+    transition: width 0.3s ease;
+}
+
+.section-title:hover::before {
+    width: 100%;
+}
+
+/* Skills Section */
+.skills-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-top: 2rem;
+    width: 100%;
+    max-width: 800px;
+}
+
+.skill {
+    background: rgba(255,255,255,0.05);
+    padding: 1.5rem;
+    border-radius: 8px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.skill::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 0;
+    background: linear-gradient(45deg, rgba(78,205,196,0.2), rgba(255,107,107,0.2));
+    transition: width 0.5s ease;
+}
+
+.skill.html::before { width: 95%; }
+.skill.css::before { width: 90%; }
+.skill.js::before { width: 85%; }
+.skill.react::before { width: 80%; }
+.skill.ui::before { width: 88%; }
+
+.skill:hover {
+    transform: translateX(10px);
+    box-shadow: -5px 5px 20px rgba(78,205,196,0.2);
+}
+
+.skill-name {
+    font-size: 1.2rem;
+    font-weight: bold;
+    position: relative;
+    z-index: 1;
+}
+
+.skill-level {
+    position: absolute;
+    right: 1.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.1rem;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 1;
+}
+
+.skill:hover .skill-level {
+    opacity: 1;
+}
+
+/* Animated Text */
+.animated-text {
+    font-size: 1.5rem;
+    line-height: 1.8;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.8s ease forwards;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Contact Section */
+.contact-info {
+    font-size: 1.2rem;
+    line-height: 2;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .kinetic-text {
+        font-size: 3rem;
+    }
+    
+    nav {
+        position: static;
+        margin-bottom: 2rem;
+    }
+    
+    nav ul {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .skills-container {
+        justify-content: center;
+    }
+} 
